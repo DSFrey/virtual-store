@@ -6,12 +6,12 @@ const Categories = (props) => {
   const { categories } = props
 
   return (
-    <ToggleButtonGroup variant="text" color="primary" exclusive value={categories.activeCategory}>
+    <ToggleButtonGroup color="primary" exclusive value={categories.activeCategory.displayName}>
       {categories.list.map(category => (
         <ToggleButton
           key={category.name}
-          value={category.name}
-          onClick={() => selectCategory(category.name)}
+          value={category.displayName}
+          onClick={() => props.selectCategory(category.name)}
         >
           {category.name}
         </ToggleButton>

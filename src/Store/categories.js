@@ -10,12 +10,11 @@ const initialState = {
 export const categoryReducer = (state = initialState, action) => {
   const { type, payload } = action;
 
-  switch(type) {
+  switch (type) {
     case 'SELECT':
-      console.log(payload)
       return {
         ...state,
-        activeCategory: state.categories.find(element => element.name === payload)
+        activeCategory: state.list.find(element => element.name === payload)
       }
     default:
       return state;

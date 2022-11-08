@@ -18,7 +18,7 @@ export const productReducer = (state = initialState, action) => {
     case 'SELECT':
       return {
         ...state,
-        filteredProducts: state.products.filter(element => element.category === payload)
+        filteredProducts: [...state.products].filter(element => element.category === payload)
       }
     default:
       return state;
