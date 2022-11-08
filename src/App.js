@@ -1,3 +1,4 @@
+import ActiveCategory from "./Components/ActiveCategory/ActiveCategory";
 import Categories from "./Components/Categories/Categories";
 import { Header } from "./Components/Header/Header";
 import Products from "./Components/Products/Products";
@@ -7,6 +8,7 @@ function App() {
     <div className="App">
       <Header />
       <Categories />
+      <ActiveCategory />
       <Products />
     </div>
   );

@@ -1,8 +1,8 @@
 const initialState = {
   list: [
-    { name: 'electronics', displayName: 'Electronics' },
-    { name: 'food', displayName: 'Food' },
-    { name: 'clothing', displayName: 'Clothing' },
+    { name: 'electronics', displayName: 'Electronics', description: 'An extended marketing description of the type of products in this category' },
+    { name: 'food', displayName: 'Food', description: 'An extended marketing description of the type of products in this category' },
+    { name: 'clothing', displayName: 'Clothing', description: 'An extended marketing description of the type of products in this category' },
   ],
   activeCategory: ''
 }

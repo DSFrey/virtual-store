@@ -14,7 +14,7 @@ export const Header = () => {
             textDecoration: 'none'
           }}
         >
-          <Typography variant="h4">Store</Typography>
+          <Typography variant="h4">Virtual Store</Typography>
         </Button>
       </Toolbar>
     </AppBar>

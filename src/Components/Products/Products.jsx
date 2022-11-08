@@ -1,4 +1,4 @@
-import { Box, Button, ButtonGroup, Card, CardMedia, Typography } from "@mui/material"
+import { Box, Button, ButtonGroup, Card, CardActions, CardMedia, Typography } from "@mui/material"
 import { connect } from "react-redux"
 // import { selectCategory } from "../../Store/categories"
 
@@ -9,15 +9,16 @@ const Products = (props) => {
     <Box sx={{
       display: 'flex',
       justifyContent: 'space-evenly',
+      flexWrap: 'wrap',
       textAlign: 'center',
-      }}>
+    }}>
       {products.filteredProducts.map(product => (
         <Card
-        key={product.name}
-        sx={{
-          margin: '10px',
+          key={product.name}
+          sx={{
+            margin: '10px',
 
-        }}
+          }}
         >
           <CardMedia
             component='img'
@@ -26,10 +27,12 @@ const Products = (props) => {
             alt={product.name}
           />
           <Typography variant="h4">{product.name}</Typography>
-          <ButtonGroup variant="text" sx={{display: 'flex'}}>
-            <Button sx={{width: '50%'}}>Add to Cart</Button>
-            <Button sx={{width: '50%'}}>Details</Button>
-          </ButtonGroup>
+          <CardActions>
+            <ButtonGroup variant="text" sx={{ display: 'flex', width: '100%'}}>
+              <Button sx={{ width: '50%' }}>Add to Cart</Button>
+              <Button sx={{ width: '50%' }}>Details</Button>
+            </ButtonGroup>
+          </CardActions>
         </Card>
       ))}
     </Box>
