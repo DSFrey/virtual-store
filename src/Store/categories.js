@@ -1,5 +1,5 @@
 const initialState = {
-  categories: [
+  list: [
     { name: 'electronics', displayName: 'Electronics' },
     { name: 'food', displayName: 'Food' },
     { name: 'clothing', displayName: 'Clothing' },
@@ -12,6 +12,7 @@ export const categoryReducer = (state = initialState, action) => {
 
   switch(type) {
     case 'SELECT':
+      console.log(payload)
       return {
         ...state,
         activeCategory: state.categories.find(element => element.name === payload)
