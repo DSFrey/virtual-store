@@ -21,6 +21,8 @@ An online shopping portal for a fictional store
   - Dispatches an action when one is clicked to “activate” it
 - A `<Products>` component
   - Displays a list of products associated with the selected category
+- (Stretch goal) An `<ActiveCategory />` component
+  - appears above the products list to inform the user as to the name/description of the currently active category
 
 ### Notes on constructing the Redux Store
 
