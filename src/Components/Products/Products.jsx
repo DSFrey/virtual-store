@@ -6,7 +6,9 @@ const Products = (props) => {
   const { products } = props
 
   return (
-    <Box sx={{
+    <Box 
+    className="product-container"
+    sx={{
       display: 'flex',
       justifyContent: 'space-evenly',
       flexWrap: 'wrap',
