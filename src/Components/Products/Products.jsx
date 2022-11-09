@@ -6,20 +6,20 @@ const Products = (props) => {
   const { products } = props
 
   return (
-    <Box 
-    className="product-container"
-    sx={{
-      display: 'flex',
-      justifyContent: 'space-evenly',
-      flexWrap: 'wrap',
-      textAlign: 'center',
-    }}>
+    <Box
+      className="product-container"
+      sx={{
+        display: 'flex',
+        justifyContent: 'space-evenly',
+        alignItems: 'flex-start',
+        flexWrap: 'wrap',
+        textAlign: 'center',
+      }}>
       {products.filteredProducts.map(product => (
         <Card
           key={product.name}
           sx={{
             margin: '10px',
-
           }}
         >
           <CardMedia
@@ -30,7 +30,7 @@ const Products = (props) => {
           />
           <Typography variant="h4">{product.name}</Typography>
           <CardActions>
-            <ButtonGroup variant="text" sx={{ display: 'flex', width: '100%'}}>
+            <ButtonGroup variant="text" sx={{ display: 'flex', width: '100%' }}>
               <Button sx={{ width: '50%' }}>Add to Cart</Button>
               <Button sx={{ width: '50%' }}>Details</Button>
             </ButtonGroup>

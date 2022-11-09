@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# Virtual Store
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An online shopping portal for a fictional store
 
-## Available Scripts
+## Technical Requirements
 
-In the project directory, you can run:
+- Create a visually appealing site using Material UI
+- Use a Redux Store to manage the state of categories and items in the store
+- Display a list of categories from state
+- When the user selects (clicks on) a category …
+- Identify that category as selected (change of class/display)
+  - Show a list of products associated with the category
+  - Application Architecture
 
-### `npm start`
+### Create the Virtual Store application as follows
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- A `<Header>` component which shows the name of your virtual store
+- A `<Footer>` component which shows your copyright and contact information
+- A `<Categories>` component
+  - Shows a list of all categories
+  - Dispatches an action when one is clicked to “activate” it
+- A `<Products>` component
+  - Displays a list of products associated with the selected category
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Notes on constructing the Redux Store
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Categories
+  - State should contain a list of categories as well as the active category
+    - Each category should have a normalized name, display name, and a description
+  - Create an action that will trigger the reducer to change the active category
+  - Update the active category in the reducer when this action is dispatched
+- Products
+  - State should be a list of all products
+    - Each product should have a category association, name, description, price, inventory count
+  - Create an action that will trigger when the active category is changed
+  - Create a reducer that will filter the products list based on the active category
+- Active Category
+  - State should store active category
+    - Other components (products, etc) might need to reference this
