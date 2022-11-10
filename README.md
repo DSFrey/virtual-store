@@ -57,3 +57,7 @@ An online shopping portal for a fictional store
   - State should be an array of products that have been added (all product details)
   - Create an action that will trigger the reducer to add the selected item to the cart
   - Create a reducer that adds the product to the array of items in state
+- You will need to use `useEffect()` to dispatch a load action on the initial page load
+  - This will need to use `thunk` as it will be asynchronous
+- When adding/removing/updating items in the cart, the action/reducer will need to update the server
+  - Perform the appropriate `post`, `put`, or `delete` action via API call (using thunk in an async action) on each of these actions as performed by the users
