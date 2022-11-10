@@ -14,10 +14,10 @@ const initialState = {
 
 export const productReducer = (state = initialState, action) => {
   const { type, payload } = action;
-
-  switch(type) {
+  let products, cart
+  switch (type) {
     case 'ADD_TO_CART':
-      let products = state.products.map(item => {
+      products = state.products.map(item => {
         if (item.name === payload) {
           if (item.inStock === 0) return item;
           return {
@@ -28,20 +28,46 @@ export const productReducer = (state = initialState, action) => {
         }
         return item;
       })
-      let cart = [...products].filter(element => element.inCart > 0)
+      cart = [...products].filter(element => element.inCart > 0)
       return {
         products,
         cart,
         cartTotalItems: state.cartTotalItems + 1
+      }
+    case 'REMOVE_FROM_CART':
+      let qty;
+      products = state.products.map(item => {
+        if (item.name === payload) {
+          qty = item.inCart
+          return {
+            ...item,
+            inStock: item.inStock + qty,
+            inCart: 0,
+          }
+        }
+        return item;
+      })
+      cart = [...products].filter(element => element.inCart > 0)
+      return {
+        products,
+        cart,
+        cartTotalItems: state.cartTotalItems - qty,
       }
     default:
       return state;
   }
 }
 
-export const addToCart = (product) => {
+export const addToCart = (payload) => {
   return {
     type: 'ADD_TO_CART',
-    payload: product
+    payload
+  }
+}
+
+export const removeFromCart = (payload) => {
+  return {
+    type: 'REMOVE_FROM_CART',
+    payload
   }
 }
