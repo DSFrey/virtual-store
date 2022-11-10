@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 import { selectCategory } from "../../Store/categories"
 
 const Categories = (props) => {
-  const { categories } = props
+  const { categories, selectCategory } = props
 
   return (
     <ButtonGroup
@@ -14,7 +14,7 @@ const Categories = (props) => {
         <Button
           key={category.name}
           value={category.name}
-          onClick={() => props.selectCategory(category.name)}
+          onClick={() => selectCategory(category.name)}
         >
           {category.displayName}
         </Button>

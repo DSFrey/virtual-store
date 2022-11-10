@@ -4,7 +4,7 @@ const initialState = {
     { name: 'food', displayName: 'Food', description: 'An extended marketing description of the type of products in this category' },
     { name: 'clothing', displayName: 'Clothing', description: 'An extended marketing description of the type of products in this category' },
   ],
-  activeCategory: ''
+  activeCategory: {}
 }
 
 export const categoryReducer = (state = initialState, action) => {
