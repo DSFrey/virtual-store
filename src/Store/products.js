@@ -28,7 +28,7 @@ export const productReducer = (state = initialState, action) => {
         }
         return item;
       })
-      let cart = [...products].filter(element => element.inCart > 1)
+      let cart = [...products].filter(element => element.inCart > 0)
       return {
         products,
         cart,
