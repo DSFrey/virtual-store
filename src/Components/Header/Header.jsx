@@ -1,11 +1,12 @@
 import { AppBar, Button, Container, Drawer, Toolbar, Typography } from "@mui/material"
 import { IconAperture, IconShoppingCart } from "@tabler/icons"
 import { useState } from "react";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import Cart from "../Cart/Cart";
 
-const Header = ({ cartTotalItems }) => {
+const Header = () => {
   const [cartOpen, setCartOpen] = useState(false);
+  const { cartTotalItems } = useSelector(state => state.products)
 
   return (
     <AppBar position="sticky">
@@ -40,8 +41,4 @@ const Header = ({ cartTotalItems }) => {
   )
 }
 
-const mapStateToProps = ({ products }) => {
-  return products
-}
-
-export default connect(mapStateToProps)(Header);
+export default Header;

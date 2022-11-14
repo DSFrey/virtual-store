@@ -1,3 +1,5 @@
+import { createSlice } from "@reduxjs/toolkit";
+
 const initialState = {
   list: [
     { name: 'electronics', displayName: 'Electronics', description: 'An extended marketing description of the type of products in this category' },
@@ -6,24 +8,18 @@ const initialState = {
   ],
   activeCategory: {}
 }
-
-export const categoryReducer = (state = initialState, action) => {
-  const { type, payload } = action;
-
-  switch (type) {
-    case 'SELECT':
+const categorySlice = createSlice({
+  name: 'categories',
+  initialState,
+  reducers: {
+    categorySelect(state, action) {
       return {
         ...state,
-        activeCategory: state.list.find(element => element.name === payload)
+        activeCategory: state.list.find(element => element.name === action.payload)
       }
-    default:
-      return state;
+    }
   }
-}
-
-export const selectCategory = (category) => {
-  return {
-    type: 'SELECT',
-    payload: category
-  }
-}
+})
+console.log(categorySlice)
+export default categorySlice.reducer;
+export const { categorySelect } = categorySlice.actions;

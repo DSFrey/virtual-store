@@ -1,16 +1,18 @@
 import { IconButton, List, ListItem, ListItemText } from "@mui/material"
 import { IconX } from "@tabler/icons"
-import { connect } from "react-redux"
-import { removeFromCart } from "../../Store/products"
+import { useDispatch, useSelector } from "react-redux"
+import { productRemoveFromCart } from "../../Store/products"
 
-const Cart = ({ cart, removeFromCart }) => {
+const Cart = () => {
+  const cart = useSelector(state => state.products.cart)
+  const dispatch = useDispatch()
   return (
     <List>
       {cart.map(item => (
         <ListItem
           key={item.name}
           secondaryAction={
-            <IconButton edge="end" aria-label="delete" onClick={() => removeFromCart(item.name)}>
+            <IconButton edge="end" aria-label="delete" onClick={() => dispatch(productRemoveFromCart(item.name))}>
               <IconX />
             </IconButton>
           }
@@ -31,13 +33,4 @@ const Cart = ({ cart, removeFromCart }) => {
   )
 }
 
-const mapStateToProps = ({ products }) => {
-  return products
-}
-
-
-const mapDispatchToProps = {
-  removeFromCart
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Cart);
+export default Cart;

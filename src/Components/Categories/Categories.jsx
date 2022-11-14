@@ -1,9 +1,10 @@
 import { ButtonGroup, Button } from "@mui/material"
-import { connect } from "react-redux"
-import { selectCategory } from "../../Store/categories"
+import { useDispatch, useSelector } from "react-redux"
+import { categorySelect } from "../../Store/categories"
 
-const Categories = (props) => {
-  const { categories, selectCategory } = props
+const Categories = () => {
+  const { categories } = useSelector(state => state)
+  const dispatch = useDispatch()
 
   return (
     <ButtonGroup
@@ -14,7 +15,7 @@ const Categories = (props) => {
         <Button
           key={category.name}
           value={category.name}
-          onClick={() => selectCategory(category.name)}
+          onClick={() => dispatch(categorySelect(category.name))}
         >
           {category.displayName}
         </Button>
@@ -23,12 +24,4 @@ const Categories = (props) => {
   )
 }
 
-const mapStateToProps = ({ categories }) => {
-  return { categories }
-}
-
-const mapDispatchToProps = {
-  selectCategory
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Categories);
+export default Categories;

@@ -1,11 +1,11 @@
 import { Box, Button, ButtonGroup, Card, CardActions, CardMedia, Typography } from "@mui/material"
-import { connect } from "react-redux"
-import { addToCart } from "../../Store/products"
+import { useDispatch, useSelector } from "react-redux"
+import { productAddToCart } from "../../Store/products"
 
 const Products = (props) => {
-  const { products } = props.products
-  const { activeCategory } = props.categories
-  const { addToCart } = props
+  const { products } = useSelector(state => state.products)
+  const { activeCategory } = useSelector(state => state.categories)
+  const dispatch = useDispatch()
   return (
     <Box
       className="product-container"
@@ -32,7 +32,7 @@ const Products = (props) => {
           <Typography variant="h4">{product.name}</Typography>
           <CardActions>
             <ButtonGroup variant="text" sx={{ display: 'flex', width: '100%' }}>
-              <Button sx={{ width: '50%' }} onClick={() => addToCart(product.name)}>Add to Cart</Button>
+              <Button sx={{ width: '50%' }} onClick={() => dispatch(productAddToCart(product.name))}>Add to Cart</Button>
               <Button sx={{ width: '50%' }}>Details</Button>
             </ButtonGroup>
           </CardActions>
@@ -42,13 +42,4 @@ const Products = (props) => {
   )
 }
 
-const mapStateToProps = (state) => {
-  return state
-}
-
-
-const mapDispatchToProps = {
-  addToCart
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Products);
+export default Products;

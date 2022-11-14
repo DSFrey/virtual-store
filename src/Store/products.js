@@ -1,3 +1,5 @@
+import { createSlice } from "@reduxjs/toolkit";
+
 const initialState = {
   products: [
     { name: 'TV', category: 'electronics', price: 699.00, inStock: 5, inCart: 0 },
@@ -12,13 +14,14 @@ const initialState = {
   cartTotalItems: 0,
 }
 
-export const productReducer = (state = initialState, action) => {
-  const { type, payload } = action;
-  let products, cart
-  switch (type) {
-    case 'ADD_TO_CART':
+const productSlice = createSlice({
+  name: 'products',
+  initialState,
+  reducers: {
+    productAddToCart(state, action) {
+      let products, cart
       products = state.products.map(item => {
-        if (item.name === payload) {
+        if (item.name === action.payload) {
           if (item.inStock === 0) return item;
           return {
             ...item,
@@ -34,10 +37,11 @@ export const productReducer = (state = initialState, action) => {
         cart,
         cartTotalItems: state.cartTotalItems + 1
       }
-    case 'REMOVE_FROM_CART':
-      let qty;
+    },
+    productRemoveFromCart(state, action) {
+      let products, cart, qty;
       products = state.products.map(item => {
-        if (item.name === payload) {
+        if (item.name === action.payload) {
           qty = item.inCart
           return {
             ...item,
@@ -53,21 +57,9 @@ export const productReducer = (state = initialState, action) => {
         cart,
         cartTotalItems: state.cartTotalItems - qty,
       }
-    default:
-      return state;
+    }
   }
-}
+})
 
-export const addToCart = (payload) => {
-  return {
-    type: 'ADD_TO_CART',
-    payload
-  }
-}
-
-export const removeFromCart = (payload) => {
-  return {
-    type: 'REMOVE_FROM_CART',
-    payload
-  }
-}
+export default productSlice.reducer;
+export const { productAddToCart, productRemoveFromCart } = productSlice.actions;
